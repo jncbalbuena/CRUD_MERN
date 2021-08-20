@@ -26,7 +26,7 @@ export const TodoForm = ({todo, onSubmit}) => {
               </div>
               <div className="form-group">
                 <button type="submit" className="btn btn-primary">
-                  Create Todo
+                  Save Todo
                 </button>
               </div>
             </form>
