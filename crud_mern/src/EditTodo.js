@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { TodoForm } from "./TodoForm";
+import { useHistory, useRouteMatch } from "react-router-dom";
+import { updateTodo, getTodo } from "./api";
 
 export const EditTodo = () => {
+  const match = useRouteMatch()
   const [todo, setTodo] = useState();
+  const history = useHistory()
   
   useEffect(() => {
-    setTodo({
-      text: "foo",
-    });
-  }, [])
+    const fetchTodo =async () => {
+    const todo =  await getTodo(match.params.id)
+    setTodo(todo)
+    }
+    fetchTodo()
+  }, []);
 
-  const onSubmit = (data) =>{
-      alert(JSON.stringify(data))
+  const onSubmit = async (data) =>{
+    await updateTodo(data, match.params.id)
+    history.push("/")
+      
   }
   return todo ? (
   <div className="container">
@@ -21,6 +29,6 @@ export const EditTodo = () => {
      </div>
   </div>
   ) : (
-      <div>Load</div>
+      <div>Loading ...</div>
   );
 };
