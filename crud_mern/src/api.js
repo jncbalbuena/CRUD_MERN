@@ -9,7 +9,7 @@ export const createTodo = (todo) => fetch("http://localhost:4000/create", {
     body: JSON.stringify(todo)
 })
 
-export const updateTodo = (todo, id) => fetch("http://localhost:4000/${id}", {
+export const updateTodo = (todo, id) => fetch(`http://localhost:4000/${id}`, {
     method: "POST",
     headers: {
         "Accept": "application/json",
@@ -18,4 +18,4 @@ export const updateTodo = (todo, id) => fetch("http://localhost:4000/${id}", {
     body: JSON.stringify(todo)
 })
 
-export const getTodo = (id) => fetch("http://localhost:4000/${id}").then(res => res.json())
+export const getTodo = (id) => fetch(`http://localhost:4000/${id}`).then(res => res.json())
