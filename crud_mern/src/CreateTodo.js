@@ -8,6 +8,7 @@ export const CreateTodo = () => {
     const onSubmit = async (data) => {
      await createTodo(data)
      history.push("/")
+     console.log(data)
     };
     return (
         <div className="container">
